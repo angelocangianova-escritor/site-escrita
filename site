@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio Criativo</title>
+    <style>
+        :root {
+            --bg-color: #0f0f12;
+            --card-bg: #1a1a24;
+            --accent-color: #8b5cf6;
+            --text-color: #e4e4e7;
+            --text-dim: #a1a1aa;
+            --status-writing: #f59e0b;
+            --status-standby: #6b7280;
+            --status-done: #10b981;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #070709;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #27272a;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 10px 15px;
+            transition: all 0.3s;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav button.active, nav button:hover {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        h1, h2, h3 {
+            color: #fff;
+        }
+
+        .now-writing {
+            background: linear-gradient(135deg, #2e1065, #1e1b4b);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border: 1px solid var(--accent-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #27272a;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            align-self: flex-start;
+        }
+
+        .status.writing { background-color: var(--status-writing); color: #000; }
+        .status.standby { background-color: var(--status-standby); color: #fff; }
+        .status.done { background-color: var(--status-done); color: #000; }
+
+        .type-tag {
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        /* Aba de Spoilers */
+        .spoiler-lock {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            border: 1px dashed #ef4444;
+        }
+
+        .spoiler-lock input {
+            background: #0f0f12;
+            border: 1px solid #451a03;
+            color: #fff;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 15px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .spoiler-lock button {
+            background-color: #ef4444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .spoiler-content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <button onclick="showPage('home')" id="btn-home" class="active">Home</button>
+            <button onclick="showPage('poemas')">Poemas</button>
+            <button onclick="showPage('roteiros')">Roteiros</button>
+            <button onclick="showPage('livros')">Livros</button>
+            <button onclick="showPage('spoilers')">⚠️ Spoilers</button>
+        </nav>
+    </header>
+
+    <div class="container">
+        
+        <!-- PÁGINA INICIAL -->
+        <div id="home" class="page active">
+            <h1>Bem-vindo ao meu Universo Criativo</h1>
+            <p style="color: var(--text-dim)">Acompanhe aqui o andamento de todos os meus projetos literários, roteiros e poesias.</p>
+            
+            <div class="now-writing">
+                <span class="status writing">🔥 Escrevendo Agora</span>
+                <h2>Título do Seu Projeto Principal</h2>
+                <p>Aqui você coloca uma descrição rápida ou o diário de escrita do projeto que está consumindo suas madrugadas no momento atual.</p>
+            </div>
+        </div>
+
+        <!-- ABA POEMAS -->
+        <div id="poemas" class="page">
+            <h2>Minhas Poesias</h2>
+            <div class="grid">
+                <div class="card">
+                    <div>
+                        <span class="type-tag">Coletânea</span>
+                        <h3>Sussurros da Meia-Noite</h3>
+                        <p style="color: var(--text-dim)">Sinopse ou tema central desta união de poemas focados em suspense e sentimentos profundos.</p>
+                    </div>
+                    <span class="status writing">Em Andamento</span>
+                </div>
+                <div class="card">
+                    <div>
+                        <span class="type-tag">Avulso</span>
+                        <h3>O Eco na Parede</h3>
+                        <p style="color: var(--text-dim)">Um poema curto sobre a solidão e o que se esconde no escuro.</p>
+                    </div>
+                    <span class="status done">Concluído</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ABA ROTEIROS -->
+        <div id="roteiros" class="page">
+            <h2>Roteiros (Séries e Filmes)</h2>
+            <div class="grid">
+                <div class="card">
+                    <div>
+                        <span class="type-tag">Série de TV</span>
+                        <h3>Projeto Suspense</h3>
+                        <p style="color: var(--text-dim)">Sinopse da série. Um thriller psicológico ambientado em uma cidade isolada onde segredos antigos começam a vir à tona.</p>
+                    </div>
+                    <span class="status standby">Stand-by</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ABA LIVROS -->
+        <div id="livros" class="page">
+            <h2>Livros e Sagas</h2>
+            <div class="grid">
+                <div class="card">
+                    <div>
+                        <span class="type-tag">Livro Único</span>
+                        <h3>Crônicas do Nevoeiro</h3>
+                        <p style="color: var(--text-dim)">Sinopse do livro. Detalhes sobre os personagens principais e a trama macabra que eles enfrentam.</p>
+                    </div>
+                    <span class="status writing">Escrevendo</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ABA SPOILERS (COM SENHA) -->
+        <div id="spoilers" class="page">
+            <h2>Aba de Spoilers</h2>
+            
+            <div id="spoiler-auth" class="spoiler-lock">
+                <h3>⚠️ Conteúdo Restrito</h3>
+                <p>Esta área contém segredos de produção, reviravoltas e segredos de personagens. Digite a senha para entrar.</p>
+                <input type="password" id="password-input" placeholder="Digite a senha...">
+                <button onclick="checkPassword()">Acessar</button>
+            </div>
+
+            <div id="spoiler-protected" class="spoiler-content">
+                <div class="now-writing" style="background: linear-gradient(135deg, #450a0a, #1a0505); border-color: #ef4444;">
+                    <h3>🔓 Você entrou no Cofre de Spoilers!</h3>
+                    <p><strong>Spoiler do Próximo Capítulo:</strong> Aqui você pode colocar aquele texto proibido, revelações sobre mortes de personagens, ou segredos de roteiro que só os mais íntimos podem saber!</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Função para mudar de aba
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(pageId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Função de verificação de senha
+        function checkPassword() {
+            const input = document.getElementById('password-input').value;
+            // VOCÊ PODE MUDAR A SENHA '1234' PARA A QUE VOCÊ QUISER AQUI ABAIXO:
+            if (input === '1234') {
+                document.getElementById('spoiler-auth').style.display = 'none';
+                document.getElementById('spoiler-protected').style.display = 'block';
+            } else {
+                alert('Senha incorreta! Os segredos continuam trancados.');
+            }
+        }
+    </script>
+</body>
+</html>
